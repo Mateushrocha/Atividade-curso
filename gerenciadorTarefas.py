@@ -1,7 +1,19 @@
 condicao = True
-bancoDeDados = {}
-id = 1
+bancoDeDados = []
+id = 0
 
+def adicionarTarefa():
+    if tarefa != "":
+        print(f"Sua tarefa é: {tarefa}")
+
+        bancoDeDados.append(tarefa)
+    else:
+        print("Escreva uma tarefa valida!")
+
+def listarTarefas():
+    for x in bancoDeDados:
+        print(x)
+    
 while condicao:
 
     #menu de opções
@@ -13,39 +25,18 @@ while condicao:
     print("  ")
 
     opcao = input("Digite o número da opção desejada: ") 
-
     print(15*"-")
-
+     
+     #if responsavel por adicionar tarefas
     if opcao == "1":
         tarefa = input("Digite sua tarefa: ")
+        adicionarTarefa()
 
-        print(f"Sua tarefa é: {tarefa}")
-
-        #Confirma se a tarefa foi adicionada
-        if tarefa != "":
-            print("Tarefa adicionada com sucesso!")
-
-            bancoDeDados[id] = tarefa
-            id += 1
-        else:
-            print("Você não digitou nenhuma tarefa. Tente novamente.")
-    
+    #if responsavel por mostrar as tarefas na tela
     if opcao == "2":
-
-        if id > 0:
-            print(f"Você tem {id} tarefa(s) cadastrada(s).")
-
-            apresentarTarefas = 1
-            tarefa = 1
-
-            while apresentarTarefas <= id:
-                print(f"Tarefa {apresentarTarefas}: {bancoDeDados[tarefa]}")
-                tarefa = tarefa + 1
-                apresentarTarefas += 1
-
-        else:
-            print("Você não tem tarefas cadastradas.")
+        listarTarefas()
     
+    #if responsavel em finalizar 
     if opcao == "3":
         condicao = False
         print("Saindo...")
